@@ -17,7 +17,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="app">
       <h1>Hydroponic modules</h1>
       <div className="modules-container">
         {data.map((module) => (
@@ -31,7 +31,7 @@ function App() {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

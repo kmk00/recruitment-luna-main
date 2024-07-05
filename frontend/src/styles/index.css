@@ -19,7 +19,7 @@
 body {
   background-color: var(--primary-color);
   color: white;
-  max-width: 1600px;
+  max-width: 120rem;
   margin: 0 auto;
   font-size: 1.6rem;
 }

@@ -4,9 +4,15 @@
   border-radius: 0.5rem;
   color: white;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   gap: 1rem;
   font-weight: bold;
+}
+
+.module__header {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
 }
 
 .module__title {
@@ -19,6 +25,10 @@
   font-size: 1.2rem;
 }
 
+.module__status--not-available {
+  opacity: 0.5;
+}
+
 .module__temperature-label {
   font-size: 1.2rem;
   opacity: 0.5;
@@ -28,6 +38,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-width: 13rem;
 }
 
 .module__temperature {

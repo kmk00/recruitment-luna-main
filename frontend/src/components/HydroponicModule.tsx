@@ -9,14 +9,20 @@ const HydroponicModule = ({
 }: Module) => {
   return (
     <div className="module">
-      <h2 className="module__title">{name}</h2>
-      <p className="module__status">
-        {available ? "Available" : "Not available"}
-      </p>
+      <div className="module__header">
+        <h2 className="module__title">{name}</h2>
+        <p
+          className={`module__status ${
+            !available && "module__status--not-available"
+          }`}
+        >
+          {available ? "available" : "not available"}
+        </p>
+      </div>
       <div className="module__temperature-container">
         <div className="module__temperature">
           <p className="module__temperature-label">Current</p>
-          <p className="module__temperature-value">{currentTemperature}°C</p>
+          <p className="module__temperature-value">3°C</p>
         </div>
         <div className="module__temperature">
           <p className="module__temperature-label">Target</p>
