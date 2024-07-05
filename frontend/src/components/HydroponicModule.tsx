@@ -1,14 +1,16 @@
+import { Link } from "react-router-dom";
 import "../styles/HydroponicModule.css";
 import { Module } from "../types.global.ts";
 
 const HydroponicModule = ({
+  id,
   name,
   currentTemperature,
   targetTemperature,
   available,
 }: Module) => {
   return (
-    <div className="module">
+    <Link className="module" to={`/${id}`}>
       <div className="module__header">
         <h2 className="module__title">{name}</h2>
         <p
@@ -29,7 +31,7 @@ const HydroponicModule = ({
           <p className="module__temperature-value">{targetTemperature}°C</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

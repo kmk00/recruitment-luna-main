@@ -6,6 +6,6 @@ export interface Module {
   currentTemperature: number;
 }
 
-interface DetailedModule extends Module {
+export interface DetailedModule extends Module {
   description: string;
 }
