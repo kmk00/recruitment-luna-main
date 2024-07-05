@@ -1,0 +1,11 @@
+.modules-container > * {
+  margin-top: 1rem;
+}
+
+.app {
+  padding: 0 1rem;
+}
+
+h1 {
+  margin-block: 2rem;
+}

@@ -1,0 +1,25 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-color: #353536;
+  --dark-color: #232324;
+  --secondary-color: #9dc334;
+  --accent-primary-color: #6dc5c0;
+  --accent-secondary-color: #fe836c;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--primary-color);
+  color: white;
+  max-width: 120rem;
+  margin: 0 auto;
+  font-size: 1.6rem;
+}
