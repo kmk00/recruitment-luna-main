@@ -1,0 +1,11 @@
+.modules-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 40rem));
+  gap: 20px;
+}
+
+h1 {
+  margin-block: 2rem;
+  padding: 1rem;
+}
