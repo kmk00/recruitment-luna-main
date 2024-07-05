@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import { DetailedModule } from "../types.global";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "../styles/HydrophonicModuleDetails.css";
+import EditModal from "./EditModal";
 
 const HydrophonicModuleDetails = () => {
   const [data, setData] = useState<DetailedModule>();
   const id = useParams<{ id: string }>().id;
   const navigate = useNavigate();
+
+  const [opened, setOpened] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +38,7 @@ const HydrophonicModuleDetails = () => {
             <button
               disabled={!data.available}
               className={`btn ${!data.available && "btn--disabled"}`}
+              onClick={() => setOpened(!opened)}
             >
               Edit
             </button>
@@ -48,6 +52,9 @@ const HydrophonicModuleDetails = () => {
           <Link to="/">
             <button className="btn">Go back</button>
           </Link>
+          {opened && (
+            <EditModal moduleId={data.id} closeModal={() => setOpened(false)} />
+          )}
         </div>
       ) : (
         <p>Loading...</p>
