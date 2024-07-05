@@ -29,10 +29,23 @@ const HydrophonicModuleDetails = () => {
   return (
     <>
       {data ? (
-        <div>
-          <h1>{data?.name}</h1>
-          <p>{data?.description}</p>
-          <Link className="" to="/">
+        <div className="mo">
+          <div className="module__heading">
+            <h1>{data.name}</h1>
+            <button
+              disabled={!data.available}
+              className={`btn ${!data.available && "btn--disabled"}`}
+            >
+              Edit
+            </button>
+          </div>
+          {!data.available && <p>Module is not available</p>}
+          <div className="content">
+            <p>Current temperature: {data.currentTemperature}°C</p>
+            <p>Target temperature: {data.targetTemperature}°C</p>
+            <p>{data.description}</p>
+          </div>
+          <Link to="/">
             <button className="btn">Go back</button>
           </Link>
         </div>
