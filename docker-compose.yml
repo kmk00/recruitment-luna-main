@@ -1,0 +1,13 @@
+version: "3.10"
+
+services:
+  backend:
+    container_name: backend
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    volumes:
+      - "./backend/:/usr/app/"
+      - "/usr/app/node_modules"
+    ports:
+      - "3001:3001"
