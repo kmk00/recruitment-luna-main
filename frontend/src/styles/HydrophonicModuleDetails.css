@@ -1,0 +1,9 @@
+.btn {
+  margin-top: 2rem;
+  background-color: var(--dark-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+}
