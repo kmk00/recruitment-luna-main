@@ -3,6 +3,7 @@ import styles from "./HistoricalData.module.css";
 import { HistoricalTemperatureData } from "../../types.global";
 import { useForm } from "react-hook-form";
 import HistoricalDataTable from "../HistoricalDataTable/HIstoricalDataTable";
+import HistoricalDataCharts from "../HistoricalDataCharts/HistoricalDataCharts";
 
 enum Mode {
   HOURLY = "hourly",
@@ -87,12 +88,20 @@ const HistoricalData = ({ moduleId }: HistoricalDataProps) => {
       </form>
 
       {historicalData && formData && (
-        <HistoricalDataTable
-          data={historicalData}
-          mode={formData.mode}
-          start={formData.start}
-          stop={formData.stop}
-        />
+        <div className={styles["historical-data__charts"]}>
+          <HistoricalDataTable
+            data={historicalData}
+            mode={formData.mode}
+            start={formData.start}
+            stop={formData.stop}
+          />
+          <HistoricalDataCharts
+            data={historicalData}
+            mode={formData.mode}
+            start={formData.start}
+            stop={formData.stop}
+          />
+        </div>
       )}
     </div>
   );
