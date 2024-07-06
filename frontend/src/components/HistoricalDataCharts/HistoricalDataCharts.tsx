@@ -7,35 +7,47 @@ import {
   YAxis,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 import styles from "./HistoricalDataCharts.module.css";
 const HistoricalDataCharts = ({ data, mode, start, stop }: HistoricalData) => {
   const chartData = data.map((item) => ({
-    date: new Date(item.timestamp).toLocaleString(),
+    date:
+      mode === "hourly"
+        ? new Date(item.timestamp).toLocaleString()
+        : new Date(item.timestamp).toLocaleDateString().split(",")[0],
     temperature: item.temperature,
   }));
 
+  console.log(chartData);
+
   return (
-    <div className={styles["historical-data"]}>
+    <ResponsiveContainer
+      width="100%"
+      height={250}
+      className={styles["historical-data"]}
+    >
       <LineChart
-        width={730}
-        height={250}
         data={chartData}
         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="date" scale="auto" domain={["auto", "auto"]} />
-        <YAxis dataKey="temperature" scale="auto" domain={["auto", "auto"]} />
-        <Tooltip />
+        <XAxis dataKey="date" hide />
+        <YAxis dataKey="temperature" domain={["auto", "auto"]} />
+        <Tooltip
+          contentStyle={{ backgroundColor: "black", color: "white" }}
+          formatter={(value: number) => ` ${value} °C`}
+          labelFormatter={(label: string) => "Date: " + label}
+        />
         <Legend />
         <Line
           type="monotone"
+          name="Temperature"
           dataKey="temperature"
-          label="Temperature"
           stroke="#8884d8"
         />
       </LineChart>
-    </div>
+    </ResponsiveContainer>
   );
 };
 
