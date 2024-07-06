@@ -9,6 +9,15 @@ const HydroponicModule = ({
   targetTemperature,
   available,
 }: Module) => {
+  const calculateTemperatureColor = (temperature: number) => {
+    if (
+      targetTemperature - temperature > 0.5 ||
+      temperature - targetTemperature > 0.5
+    )
+      return "negative";
+    else return "positive";
+  };
+
   return (
     <Link className={styles["module"]} to={`/${id}`}>
       <div className={styles["module__header"]}>
@@ -21,14 +30,23 @@ const HydroponicModule = ({
           {available ? "available" : "not available"}
         </p>
       </div>
-      <div className={styles["module__temperatures"]}>
-        <div className={styles["module__temperature"]}>
+      <div className={styles["module__temperatures-container"]}>
+        <div>
           <p className={styles["module__temperature-label"]}>Current</p>
-          <p className={styles["module__temperature-value"]}>
+          <p
+            className={`${styles["module__temperature-value"]} ${
+              available &&
+              styles[
+                `module__temperature-value--${calculateTemperatureColor(
+                  currentTemperature
+                )}`
+              ]
+            }`}
+          >
             {currentTemperature ? currentTemperature + "°C" : "--"}
           </p>
         </div>
-        <div className={styles["module__temperature"]}>
+        <div>
           <p className={styles["module__temperature-label"]}>Target</p>
           <p className={styles["module__temperature-value"]}>
             {targetTemperature}°C
