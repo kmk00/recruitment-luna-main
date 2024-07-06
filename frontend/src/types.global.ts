@@ -9,3 +9,8 @@ export interface Module {
 export interface DetailedModule extends Module {
   description: string;
 }
+
+export interface CurrentTemperatureData {
+  id: string;
+  temperature: number;
+}
