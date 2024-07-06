@@ -63,7 +63,9 @@ const EditModal = ({
             id="description"
           />
           {errors.description && (
-            <p className={styles["edit-modal__error"]}>Name is required</p>
+            <p className={styles["edit-modal__error"]}>
+              Description is required
+            </p>
           )}
           <label htmlFor="targetTemperature">Target temperature</label>
           <input
