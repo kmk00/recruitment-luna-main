@@ -14,3 +14,8 @@ export interface CurrentTemperatureData {
   id: string;
   temperature: number;
 }
+
+export interface HistoricalTemperatureData {
+  timestamp: string;
+  temperature: number;
+}

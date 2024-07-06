@@ -1,4 +1,4 @@
-import { act, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import calculateTemperatureColor from "../../utils/calculateTemperatureColor";
 import { CurrentTemperatureData, DetailedModule } from "../../types.global";
 import { useNavigate } from "react-router-dom";
