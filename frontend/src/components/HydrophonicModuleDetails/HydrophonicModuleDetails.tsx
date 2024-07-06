@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { DetailedModule } from "../types.global";
+import { DetailedModule } from "../../types.global";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import "../styles/HydrophonicModuleDetails.css";
-import EditModal from "./EditModal";
+import styles from "./HydrophonicModuleDetails.module.css";
+import EditModal from "../EditModal/EditModal";
 
 const HydrophonicModuleDetails = () => {
   const [data, setData] = useState<DetailedModule>();
@@ -32,25 +32,27 @@ const HydrophonicModuleDetails = () => {
   return (
     <>
       {data ? (
-        <div className="mo">
-          <div className="module__heading">
+        <div className="">
+          <div className={styles["module__heading"]}>
             <h1>{data.name}</h1>
             <button
               disabled={!data.available}
-              className={`btn ${!data.available && "btn--disabled"}`}
+              className={`${styles["btn"]} ${
+                !data.available && styles["btn--disabled"]
+              }`}
               onClick={() => setOpened(!opened)}
             >
               Edit
             </button>
           </div>
           {!data.available && <p>Module is not available</p>}
-          <div className="content">
+          <div className={styles["content"]}>
             <p>Current temperature: {data.currentTemperature}°C</p>
             <p>Target temperature: {data.targetTemperature}°C</p>
             <p>{data.description}</p>
           </div>
           <Link to="/">
-            <button className="btn">Go back</button>
+            <button className={styles["btn"]}>Go back</button>
           </Link>
           {opened && (
             <EditModal moduleId={data.id} closeModal={() => setOpened(false)} />

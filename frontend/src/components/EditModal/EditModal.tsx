@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import "../styles/EditModal.css";
+import styles from "./EditModal.module.css";
 
 const EditModal = ({
   closeModal,
@@ -40,17 +40,22 @@ const EditModal = ({
   };
 
   return (
-    <div className="edit-modal">
-      <div className="edit-modal__content">
-        <h2 className="edit-modal__title">Edit module</h2>
-        <form onSubmit={handleSubmit(onSubmit)} className="edit-modal__form">
+    <div className={styles["edit-modal"]}>
+      <div className={styles["edit-modal__content"]}>
+        <h2 className={styles["edit-modal__title"]}>Edit module</h2>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className={styles["edit-modal__form"]}
+        >
           <label htmlFor="name">Name</label>
           <input
             {...register("name", { required: true })}
             type="text"
             id="name"
           />
-          {errors.name && <p className="edit-modal__error">Name is required</p>}
+          {errors.name && (
+            <p className={styles["edit-modal__error"]}>Name is required</p>
+          )}
           <label htmlFor="description">Description</label>
           <input
             {...register("description", { required: true })}
@@ -58,7 +63,7 @@ const EditModal = ({
             id="description"
           />
           {errors.description && (
-            <p className="edit-modal__error">Name is required</p>
+            <p className={styles["edit-modal__error"]}>Name is required</p>
           )}
           <label htmlFor="targetTemperature">Target temperature</label>
           <input
@@ -71,13 +76,13 @@ const EditModal = ({
             id="targetTemperature"
           />
           {errors.targetTemperature && (
-            <p className="edit-modal__error">
+            <p className={styles["edit-modal__error"]}>
               Value between 0 and 40 is required
             </p>
           )}
-          <input className="" value={"Save"} type="submit" />
+          <input value={"Save"} type="submit" />
         </form>
-        <button onClick={closeModal} className="edit-modal__close">
+        <button onClick={closeModal} className={styles["edit-modal__close"]}>
           Close
         </button>
       </div>

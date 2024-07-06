@@ -1,5 +1,5 @@
-import "./styles/App.css";
-import HydroponicModule from "./components/HydroponicModule";
+import styles from "./styles/App.module.css";
+import HydroponicModule from "./components/HydroponicModule/HydroponicModule";
 import { useEffect, useState } from "react";
 import { Module } from "./types.global";
 
@@ -17,9 +17,9 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
+    <div className={styles["app"]}>
       <h1>Hydroponic modules</h1>
-      <div className="modules-container">
+      <div className={styles["modules-container"]}>
         {data.map((module) => (
           <HydroponicModule
             id={module.id}
