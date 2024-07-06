@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { DetailedModule } from "../../types.global";
+import { CurrentTemperatureData, DetailedModule } from "../../types.global";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./HydrophonicModuleDetails.module.css";
 import EditModal from "../EditModal/EditModal";
+import { io } from "socket.io-client";
 
 const HydrophonicModuleDetails = () => {
   const [data, setData] = useState<DetailedModule>();
@@ -28,6 +29,34 @@ const HydrophonicModuleDetails = () => {
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const socket = io("http://localhost:3001");
+
+    socket.on("moduleUpdate", (moduleUpdate: CurrentTemperatureData[]) => {
+      const moduleToUpdate = moduleUpdate.find(
+        (module: CurrentTemperatureData) => module.id === id
+      );
+
+      if (!moduleToUpdate) {
+        return;
+      }
+
+      setData((prev) => {
+        if (prev) {
+          return { ...prev, currentTemperature: moduleToUpdate.temperature };
+        }
+      });
+    });
+
+    socket.on("error", (error) => {
+      console.error(error);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, [data]);
 
   return (
     <>

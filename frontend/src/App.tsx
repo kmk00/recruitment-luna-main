@@ -3,7 +3,6 @@ import HydroponicModule from "./components/HydroponicModule/HydroponicModule";
 import { useEffect, useState } from "react";
 import { CurrentTemperatureData, Module } from "./types.global";
 import { io } from "socket.io-client";
-import { set } from "react-hook-form";
 
 function App() {
   const [modules, setModules] = useState<Module[]>([]);
@@ -21,7 +20,7 @@ function App() {
   useEffect(() => {
     const socket = io("http://localhost:3001");
 
-    socket.on("moduleUpdate", (updatedModules) => {
+    socket.on("moduleUpdate", (updatedModules: CurrentTemperatureData[]) => {
       const updatedData = modules.map((module) => {
         const updatedModule = updatedModules.find(
           (temperatureInfo: CurrentTemperatureData) =>
