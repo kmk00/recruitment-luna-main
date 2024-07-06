@@ -24,7 +24,9 @@ const HydroponicModule = ({
       <div className={styles["module__temperatures"]}>
         <div className={styles["module__temperature"]}>
           <p className={styles["module__temperature-label"]}>Current</p>
-          <p className={styles["module__temperature-value"]}>3°C</p>
+          <p className={styles["module__temperature-value"]}>
+            {currentTemperature ? currentTemperature + "°C" : "--"}
+          </p>
         </div>
         <div className={styles["module__temperature"]}>
           <p className={styles["module__temperature-label"]}>Target</p>
