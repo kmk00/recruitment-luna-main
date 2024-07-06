@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./styles/index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HydrophonicModuleDetails from "./components/HydrophonicModuleDetails/HydrophonicModuleDetails.tsx";
+import HydrophonicModuleDetails from "./HydrophonicModuleDetails.tsx";
 import Error from "./components/Error.tsx";
 
 const router = createBrowserRouter([
