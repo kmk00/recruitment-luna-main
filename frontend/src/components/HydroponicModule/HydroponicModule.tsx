@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./HydroponicModule.module.css";
 import { Module } from "../../types.global.ts";
+import calculateTemperatureColor from "../../utils/calculateTemperatureColor.ts";
 
 const HydroponicModule = ({
   id,
@@ -9,14 +10,10 @@ const HydroponicModule = ({
   targetTemperature,
   available,
 }: Module) => {
-  const calculateTemperatureColor = (temperature: number) => {
-    if (
-      targetTemperature - temperature > 0.5 ||
-      temperature - targetTemperature > 0.5
-    )
-      return "negative";
-    else return "positive";
-  };
+  const accent = calculateTemperatureColor(
+    currentTemperature,
+    targetTemperature
+  );
 
   return (
     <Link className={styles["module"]} to={`/${id}`}>
@@ -35,12 +32,7 @@ const HydroponicModule = ({
           <p className={styles["module__temperature-label"]}>Current</p>
           <p
             className={`${styles["module__temperature-value"]} ${
-              available &&
-              styles[
-                `module__temperature-value--${calculateTemperatureColor(
-                  currentTemperature
-                )}`
-              ]
+              available && styles[`module__temperature-value--${accent}`]
             }`}
           >
             {currentTemperature ? currentTemperature + "°C" : "--"}

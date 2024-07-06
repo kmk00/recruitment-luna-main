@@ -22,3 +22,11 @@
 .content {
   margin-block: 2rem;
 }
+
+.module__temperature-value--positive {
+  color: var(--secondary-color);
+}
+
+.module__temperature-value--negative {
+  color: var(--accent-secondary-color);
+}

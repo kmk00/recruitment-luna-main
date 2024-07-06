@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./HydrophonicModuleDetails.module.css";
 import EditModal from "../EditModal/EditModal";
 import { io } from "socket.io-client";
+import calculateTemperatureColor from "../../utils/calculateTemperatureColor";
 
 const HydrophonicModuleDetails = () => {
   const [data, setData] = useState<DetailedModule>();
@@ -58,6 +59,11 @@ const HydrophonicModuleDetails = () => {
     };
   }, [data]);
 
+  const accent = calculateTemperatureColor(
+    data?.currentTemperature,
+    data?.targetTemperature
+  );
+
   return (
     <>
       {data ? (
@@ -76,7 +82,13 @@ const HydrophonicModuleDetails = () => {
           </div>
           {!data.available && <p>Module is not available</p>}
           <div className={styles["content"]}>
-            <p>Current temperature: {data.currentTemperature}°C</p>
+            <p
+              className={`${styles["module__temperature"]} ${
+                styles["module__temperature-value--" + accent]
+              }`}
+            >
+              Current temperature: {data.currentTemperature}°C
+            </p>
             <p>Target temperature: {data.targetTemperature}°C</p>
             <p>{data.description}</p>
           </div>
