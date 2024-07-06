@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./HistoricalData.module.css";
 import { HistoricalTemperatureData } from "../../types.global";
 import { useForm } from "react-hook-form";
-import HIstoricalDataTable from "../HistoricalDataTable/HIstoricalDataTable";
+import HistoricalDataTable from "../HistoricalDataTable/HIstoricalDataTable";
 
 enum Mode {
   HOURLY = "hourly",
@@ -23,6 +23,8 @@ const HistoricalData = ({ moduleId }: HistoricalDataProps) => {
   const [historicalData, setHistoricalData] =
     useState<HistoricalTemperatureData[]>();
 
+  const [formData, setFormData] = useState<Inputs | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -38,6 +40,7 @@ const HistoricalData = ({ moduleId }: HistoricalDataProps) => {
       throw new Error("Failed to fetch historical data");
     }
     const responseData = await response.json();
+    setFormData(data);
     setHistoricalData(responseData);
   };
 
@@ -48,7 +51,7 @@ const HistoricalData = ({ moduleId }: HistoricalDataProps) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="start">Start date</label>
         <input
-          {...register("start")}
+          {...register("start", { required: "Start date is required" })}
           type="datetime-local"
           id="start"
           name="start"
@@ -65,7 +68,7 @@ const HistoricalData = ({ moduleId }: HistoricalDataProps) => {
         {errors.stop && <p>{errors.stop.message}</p>}
         <label htmlFor="mode">Hourly</label>
         <input
-          {...register("mode")}
+          {...register("mode", { required: "Mode is required" })}
           type="radio"
           id="hourly"
           name="mode"
@@ -83,12 +86,12 @@ const HistoricalData = ({ moduleId }: HistoricalDataProps) => {
         <button type="submit">Find</button>
       </form>
 
-      {historicalData && (
-        <HIstoricalDataTable
+      {historicalData && formData && (
+        <HistoricalDataTable
           data={historicalData}
-          mode={data.mode}
-          start={data.start}
-          stop={data.stop}
+          mode={formData.mode}
+          start={formData.start}
+          stop={formData.stop}
         />
       )}
     </div>

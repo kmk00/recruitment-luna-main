@@ -1,0 +1,22 @@
+.historical-data {
+  margin-top: 2rem;
+}
+
+.temperature {
+  text-align: right;
+}
+
+.table {
+  margin-block: 1rem;
+  box-shadow: 0 0 10px var(--dark-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.time {
+  padding: 1rem;
+}
+
+.tr:nth-child(even) {
+  background-color: var(--dark-color);
+}
