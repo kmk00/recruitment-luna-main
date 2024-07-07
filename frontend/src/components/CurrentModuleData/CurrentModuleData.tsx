@@ -96,11 +96,14 @@ const CurrentModuleData = ({ moduleId, action }: CurrentModuleDataProps) => {
               className={`${styles["module__container"]} ${styles["module__temperature"]}`}
             >
               <p className={styles["module__temperature-label"]}>Current</p>
-              <span
+              <p
                 className={`${styles["module__temperature-value--" + accent]}`}
               >
-                {currentModule.currentTemperature}°C
-              </span>
+                {currentModule.currentTemperature
+                  ? `${currentModule.currentTemperature} °C`
+                  : "--"}
+              </p>
+              <p>{!currentModule.available && "not available"}</p>
             </div>
             <div
               className={`${styles["module__container"]} ${styles["module__temperature"]}`}
