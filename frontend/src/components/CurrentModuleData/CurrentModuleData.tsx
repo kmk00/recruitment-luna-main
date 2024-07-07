@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import calculateTemperatureColor from "../../utils/calculateTemperatureColor";
 import { CurrentTemperatureData, DetailedModule } from "../../types.global";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./CurrentModuleData.module.css";
 import { io } from "socket.io-client";
 
@@ -72,32 +72,49 @@ const CurrentModuleData = ({ moduleId, action }: CurrentModuleDataProps) => {
   return (
     <>
       {currentModule ? (
-        <>
-          <div className={styles["module__heading"]}>
-            <h1>{currentModule?.name}</h1>
-            <button
-              disabled={!currentModule?.available}
-              className={`${styles["btn"]} ${
-                !currentModule?.available ? styles["btn--disabled"] : ""
-              }`}
-              onClick={action}
-            >
-              Edit
-            </button>
+        <div className={styles["module"]}>
+          <div className={styles["module__header"]}>
+            <h1 className={styles["module__name"]}>{currentModule.name}</h1>
+            <div className={styles["module__buttons"]}>
+              <button
+                disabled={!currentModule.available}
+                className={`${styles["btn"]} ${
+                  !currentModule.available ? styles["btn--disabled"] : ""
+                }`}
+                onClick={action}
+              >
+                Edit
+              </button>
+              <Link to="/">
+                <button className={styles["btn"]}>Go back</button>
+              </Link>
+            </div>
           </div>
 
-          <div className={styles["content"]}>
-            <p
-              className={`${styles["module__temperature"]} ${
-                styles["module__temperature-value--" + accent]
-              }`}
+          <div className={styles["module__temperatures-container"]}>
+            <div
+              className={`${styles["module__container"]} ${styles["module__temperature"]}`}
             >
-              Current temperature: {currentModule?.currentTemperature}°C
-            </p>
-            <p>Target temperature: {currentModule?.targetTemperature}°C</p>
-            <p>{currentModule?.description}</p>
+              <p className={styles["module__temperature-label"]}>Current</p>
+              <span
+                className={`${styles["module__temperature-value--" + accent]}`}
+              >
+                {currentModule.currentTemperature}°C
+              </span>
+            </div>
+            <div
+              className={`${styles["module__container"]} ${styles["module__temperature"]}`}
+            >
+              <p className={styles["module__temperature-label"]}>Target</p>
+              <span>{currentModule.targetTemperature}°C</span>
+            </div>
           </div>
-        </>
+          <div className={styles["module__container"]}>
+            <p className={styles["module__description"]}>
+              {currentModule.description}
+            </p>
+          </div>
+        </div>
       ) : (
         <p>Loading...</p>
       )}

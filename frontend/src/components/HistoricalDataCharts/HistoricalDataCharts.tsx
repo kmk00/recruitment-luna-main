@@ -10,7 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import styles from "./HistoricalDataCharts.module.css";
-const HistoricalDataCharts = ({ data, mode, start, stop }: HistoricalData) => {
+const HistoricalDataCharts = ({ data, mode }: HistoricalData) => {
   const chartData = data.map((item) => ({
     date:
       mode === "hourly"

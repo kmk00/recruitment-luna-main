@@ -49,53 +49,69 @@ const HistoricalData = ({ moduleId }: HistoricalDataProps) => {
     <div className={styles["historical-data"]}>
       <h2>Historical Data</h2>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="start">Start date</label>
-        <input
-          {...register("start", { required: "Start date is required" })}
-          type="datetime-local"
-          id="start"
-          name="start"
-        />
-        {errors.start && <p>{errors.start.message}</p>}
-        <label htmlFor="stop">Stop date</label>
-        <input
-          {...register("stop", { required: "Stop date is required" })}
-          defaultValue={new Date().toISOString().slice(0, -8)}
-          type="datetime-local"
-          id="stop"
-          name="stop"
-        />
-        {errors.stop && <p>{errors.stop.message}</p>}
-        <label htmlFor="mode">Hourly</label>
-        <input
-          {...register("mode", { required: "Mode is required" })}
-          type="radio"
-          id="hourly"
-          name="mode"
-          value="hourly"
-        />
-        <label htmlFor="hourly">Daily</label>
-        <input
-          {...register("mode")}
-          type="radio"
-          id="daily"
-          name="mode"
-          value="daily"
-        />
+      <form
+        className={styles["historical-data__form"]}
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div>
+          <label htmlFor="start">Start date</label>
+          <input
+            {...register("start", { required: "Start date is required" })}
+            type="datetime-local"
+            id="start"
+            name="start"
+          />
+          {errors.start && <p>{errors.start.message}</p>}
+        </div>
+        <div>
+          <label htmlFor="stop">Stop date</label>
+          <input
+            {...register("stop", { required: "Stop date is required" })}
+            defaultValue={new Date().toISOString().slice(0, -8)}
+            type="datetime-local"
+            id="stop"
+            name="stop"
+          />
+          {errors.stop && <p>{errors.stop.message}</p>}
+        </div>
+        <div>
+          <label htmlFor="hourly">Hourly</label>
+          <input
+            {...register("mode", { required: "Mode is required" })}
+            type="radio"
+            id="hourly"
+            name="mode"
+            value="hourly"
+          />
+        </div>
+        <div>
+          <label htmlFor="daily">Daily</label>
+          <input
+            {...register("mode")}
+            type="radio"
+            id="daily"
+            name="mode"
+            value="daily"
+          />
+        </div>
         {errors.mode && <p>{errors.mode.message}</p>}
-        <button type="submit">Find</button>
+        <button
+          className={`${styles["historical-data__submit"]}`}
+          type="submit"
+        >
+          Search Data
+        </button>
       </form>
 
       {historicalData && formData && (
         <div className={styles["historical-data__charts"]}>
-          <HistoricalDataTable
+          <HistoricalDataCharts
             data={historicalData}
             mode={formData.mode}
             start={formData.start}
             stop={formData.stop}
           />
-          <HistoricalDataCharts
+          <HistoricalDataTable
             data={historicalData}
             mode={formData.mode}
             start={formData.start}

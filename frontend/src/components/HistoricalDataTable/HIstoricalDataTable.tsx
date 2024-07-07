@@ -1,13 +1,9 @@
 import { HistoricalData } from "../../types.global";
 import styles from "./HistoricalDataTable.module.css";
 
-const HistoricalDataTable = ({ data, mode, start, stop }: HistoricalData) => {
+const HistoricalDataTable = ({ data }: HistoricalData) => {
   return (
     <div className={styles["historical-data"]}>
-      <p>Mode: {mode}</p>
-      <p>Start: {new Date(start).toLocaleString()}</p>
-      <p>Stop: {new Date(stop).toLocaleString()}</p>
-
       <table className={styles.table}>
         <thead className={styles.thead}>
           <tr>

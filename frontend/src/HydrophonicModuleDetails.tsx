@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styles from "./styles/HydrophonicModuleDetails.module.css";
 import EditModal from "./components/EditModal/EditModal";
 import HistoricalData from "./components/HistoricalData/HistoricalData";
@@ -13,12 +13,9 @@ const HydrophonicModuleDetails = () => {
   return (
     <>
       {id ? (
-        <div className="">
+        <div className={styles["module-details"]}>
           <CurrentModuleData action={setOpenedCallback} moduleId={id} />
           <HistoricalData moduleId={id} />
-          <Link to="/">
-            <button className={styles["btn"]}>Go back</button>
-          </Link>
           {opened && (
             <EditModal moduleId={id} closeModal={() => setOpened(false)} />
           )}
