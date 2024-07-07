@@ -1,15 +1,18 @@
+import useUpdateTemperature from "../../hooks/useUpdateTemperature";
 import calculateTemperatureColor from "../../utils/calculateTemperatureColor";
 import styles from "./CurrentTemperature.module.css";
 
 const CurrentTemperature = ({
-  currentTemperature,
+  moduleId,
   targetTemperature,
   available,
 }: {
-  currentTemperature: number | undefined;
+  moduleId: string;
   targetTemperature: number;
   available: boolean;
 }) => {
+  const { currentTemperature } = useUpdateTemperature(moduleId);
+
   const accent = calculateTemperatureColor(
     currentTemperature,
     targetTemperature

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { CurrentTemperatureData, DetailedModule } from "../../types.global";
+import { DetailedModule } from "../../types.global";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./CurrentModuleData.module.css";
-import { io } from "socket.io-client";
 import CurrentTemperature from "../CurrentTemperature/CurrentTemperature";
+import useUpdateTemperature from "../../hooks/useUpdateTemperature";
 
 type CurrentModuleDataProps = {
   moduleId: string;
@@ -34,34 +34,6 @@ const CurrentModuleData = ({ moduleId, action }: CurrentModuleDataProps) => {
     fetchData();
   }, [moduleId]);
 
-  useEffect(() => {
-    const socket = io("http://localhost:3001");
-
-    socket.on("moduleUpdate", (moduleUpdate: CurrentTemperatureData[]) => {
-      const moduleToUpdate = moduleUpdate.find(
-        (module: CurrentTemperatureData) => module.id === moduleId
-      );
-
-      if (!moduleToUpdate) {
-        return;
-      }
-
-      setCurrentModule((prev) => {
-        if (prev) {
-          return { ...prev, currentTemperature: moduleToUpdate.temperature };
-        }
-      });
-    });
-
-    socket.on("error", (error) => {
-      console.error(error);
-    });
-
-    return () => {
-      socket.disconnect();
-    };
-  }, [currentModule]);
-
   return (
     <>
       {currentModule ? (
@@ -86,9 +58,9 @@ const CurrentModuleData = ({ moduleId, action }: CurrentModuleDataProps) => {
 
           <div className={styles["module__temperatures-container"]}>
             <CurrentTemperature
+              moduleId={moduleId}
               available={currentModule.available}
               targetTemperature={currentModule.targetTemperature}
-              currentTemperature={currentModule.currentTemperature}
             />
             <div className={`${styles["module__container"]}`}>
               <p className={styles["module__temperature-label"]}>Target</p>
