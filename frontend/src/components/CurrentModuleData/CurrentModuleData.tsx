@@ -3,7 +3,6 @@ import { DetailedModule } from "../../types.global";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./CurrentModuleData.module.css";
 import CurrentTemperature from "../CurrentTemperature/CurrentTemperature";
-import useUpdateTemperature from "../../hooks/useUpdateTemperature";
 
 type CurrentModuleDataProps = {
   moduleId: string;

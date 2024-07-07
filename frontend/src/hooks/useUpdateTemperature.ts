@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { io } from "socket.io-client";
-import { CurrentTemperatureData, DetailedModule } from "../types.global";
+import { CurrentTemperatureData } from "../types.global";
 
 const useUpdateTemperature = (moduleId: string) => {
   const [currentTemperature, setCurrentTemperature] = useState<
@@ -15,7 +15,7 @@ const useUpdateTemperature = (moduleId: string) => {
       const temperature =
         moduleUpdate.find(
           (module: CurrentTemperatureData) => module.id === moduleId
-        )?.temperature || 0;
+        )?.temperature || undefined;
 
       setCurrentTemperature(temperature);
     });
