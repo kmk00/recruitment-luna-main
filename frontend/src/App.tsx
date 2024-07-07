@@ -1,6 +1,6 @@
 import styles from "./styles/App.module.css";
 import HydroponicModule from "./components/HydroponicModule/HydroponicModule";
-import useCurrentModules from "./hooks/useCurrentTemperatures";
+import useCurrentModules from "./hooks/useCurrentModules";
 
 function App() {
   const { modules } = useCurrentModules();
