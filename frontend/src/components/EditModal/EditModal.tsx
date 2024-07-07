@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import styles from "./EditModal.module.css";
+import { useEffect } from "react";
 
 const EditModal = ({
   closeModal,
@@ -14,7 +15,21 @@ const EditModal = ({
     targetTemperature: number;
   };
 
+  useEffect(() => {
+    // Get module data for editing
+    const fetchModule = async () => {
+      const response = await fetch(`http://localhost:3001/modules/${moduleId}`);
+      const module = await response.json();
+      setValue("name", module.name);
+      setValue("description", module.description);
+      setValue("targetTemperature", module.targetTemperature);
+    };
+
+    fetchModule();
+  }, [moduleId]);
+
   const updateModule = async (data: Inputs) => {
+    // Update module data
     const response = await fetch(`http://localhost:3001/modules/${moduleId}`, {
       method: "PATCH",
       headers: {
@@ -32,6 +47,7 @@ const EditModal = ({
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<Inputs>();
 
