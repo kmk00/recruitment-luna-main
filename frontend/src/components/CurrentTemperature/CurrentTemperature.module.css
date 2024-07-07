@@ -1,0 +1,33 @@
+.module__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 0;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--dark-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.module__temperature {
+  text-align: center;
+}
+
+.module__temperature-value {
+  font-size: 1.2rem;
+}
+
+.module__temperature-value--positive {
+  color: var(--secondary-color);
+}
+
+.module__temperature-value--negative {
+  color: var(--accent-secondary-color);
+}
+
+.module__temperature-status {
+  font-size: 0.8rem;
+}

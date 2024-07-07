@@ -23,6 +23,14 @@
   align-items: center;
 }
 
+.module__temperature-value {
+  font-size: 1.2rem;
+}
+
+.module__temperature-status {
+  font-size: 0.8rem;
+}
+
 .module__temperature-value--positive {
   color: var(--secondary-color);
 }
@@ -50,5 +58,7 @@
 }
 
 .module__name {
-  font-size: 2.6rem;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
 }

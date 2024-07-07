@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import calculateTemperatureColor from "../../utils/calculateTemperatureColor";
 import { CurrentTemperatureData, DetailedModule } from "../../types.global";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./CurrentModuleData.module.css";
 import { io } from "socket.io-client";
+import CurrentTemperature from "../CurrentTemperature/CurrentTemperature";
 
 type CurrentModuleDataProps = {
   moduleId: string;
@@ -15,8 +15,6 @@ const CurrentModuleData = ({ moduleId, action }: CurrentModuleDataProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(moduleId);
-
     const fetchData = async () => {
       try {
         const response = await fetch(
@@ -64,18 +62,16 @@ const CurrentModuleData = ({ moduleId, action }: CurrentModuleDataProps) => {
     };
   }, [currentModule]);
 
-  const accent = calculateTemperatureColor(
-    currentModule?.currentTemperature,
-    currentModule?.targetTemperature
-  );
-
   return (
     <>
       {currentModule ? (
         <div className={styles["module"]}>
           <div className={styles["module__header"]}>
-            <h1 className={styles["module__name"]}>{currentModule.name}</h1>
+            <p className={styles["module__name"]}>{currentModule.name}</p>
             <div className={styles["module__buttons"]}>
+              <Link to="/">
+                <button className={styles["btn"]}>Go back</button>
+              </Link>
               <button
                 disabled={!currentModule.available}
                 className={`${styles["btn"]} ${
@@ -85,31 +81,20 @@ const CurrentModuleData = ({ moduleId, action }: CurrentModuleDataProps) => {
               >
                 Edit
               </button>
-              <Link to="/">
-                <button className={styles["btn"]}>Go back</button>
-              </Link>
             </div>
           </div>
 
           <div className={styles["module__temperatures-container"]}>
-            <div
-              className={`${styles["module__container"]} ${styles["module__temperature"]}`}
-            >
-              <p className={styles["module__temperature-label"]}>Current</p>
-              <p
-                className={`${styles["module__temperature-value--" + accent]}`}
-              >
-                {currentModule.currentTemperature
-                  ? `${currentModule.currentTemperature} °C`
-                  : "--"}
-              </p>
-              <p>{!currentModule.available && "not available"}</p>
-            </div>
-            <div
-              className={`${styles["module__container"]} ${styles["module__temperature"]}`}
-            >
+            <CurrentTemperature
+              available={currentModule.available}
+              targetTemperature={currentModule.targetTemperature}
+              currentTemperature={currentModule.currentTemperature}
+            />
+            <div className={`${styles["module__container"]}`}>
               <p className={styles["module__temperature-label"]}>Target</p>
-              <span>{currentModule.targetTemperature}°C</span>
+              <p className={styles["module__temperature-value"]}>
+                {currentModule.targetTemperature}°C
+              </p>
             </div>
           </div>
           <div className={styles["module__container"]}>
