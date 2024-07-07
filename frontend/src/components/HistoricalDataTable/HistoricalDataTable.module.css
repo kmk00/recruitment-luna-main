@@ -1,0 +1,23 @@
+.historical-data {
+  flex-grow: 1;
+}
+
+.temperature {
+  text-align: right;
+}
+
+.table {
+  box-shadow: 0 0 10px var(--dark-color);
+  padding: 1rem;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.time,
+.temperature {
+  padding: 1rem;
+}
+
+.tr:nth-child(even) {
+  background-color: var(--dark-color);
+}

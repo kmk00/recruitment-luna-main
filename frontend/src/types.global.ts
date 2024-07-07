@@ -14,3 +14,15 @@ export interface CurrentTemperatureData {
   id: string;
   temperature: number;
 }
+
+export interface HistoricalTemperatureData {
+  timestamp: string;
+  temperature: number;
+}
+
+export interface HistoricalData {
+  mode: string;
+  data: HistoricalTemperatureData[];
+  start: string;
+  stop: string;
+}

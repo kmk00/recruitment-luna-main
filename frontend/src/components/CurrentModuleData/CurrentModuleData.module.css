@@ -1,0 +1,64 @@
+.module {
+  display: flex;
+  flex-basis: 20rem;
+  flex-grow: 1;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.module__description {
+  font-size: 1.4rem;
+}
+
+.module__buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.module__temperatures-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.module__temperature-value {
+  font-size: 1.2rem;
+}
+
+.module__temperature-status {
+  font-size: 0.8rem;
+}
+
+.module__temperature-value--positive {
+  color: var(--secondary-color);
+}
+
+.module__temperature-value--negative {
+  color: var(--accent-secondary-color);
+}
+
+.module__temperature {
+  text-align: center;
+}
+
+.module__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 0;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--dark-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.module__name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
