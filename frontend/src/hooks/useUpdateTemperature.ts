@@ -9,7 +9,9 @@ const useUpdateTemperature = (moduleId: string) => {
   >();
 
   useEffect(() => {
-    const socket = io("http://localhost:3001");
+    const socket = io("http://localhost:3001", {
+      transports: ["websocket"],
+    });
 
     socket.on("moduleUpdate", (moduleUpdate: CurrentTemperatureData[]) => {
       const temperature =
@@ -27,7 +29,7 @@ const useUpdateTemperature = (moduleId: string) => {
     return () => {
       socket.disconnect();
     };
-  }, [currentTemperature]);
+  }, []);
 
   return {
     currentTemperature,
