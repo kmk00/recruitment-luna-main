@@ -26,9 +26,11 @@ const CurrentTemperature = ({
         <p className={styles["module__temperature-status"]}> not available</p>
       ) : (
         <p
-          className={`${styles["module__temperature-value--" + accent]} ${
-            styles["module__temperature-value"]
-          } `}
+          className={`${
+            styles[
+              "module__temperature-value--" + (accent ? "positive" : "negative")
+            ]
+          } ${styles["module__temperature-value"]} `}
         >
           {currentTemperature ? `${currentTemperature} °C` : "--"}
         </p>
