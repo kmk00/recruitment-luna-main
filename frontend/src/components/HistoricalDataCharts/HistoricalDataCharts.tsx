@@ -44,7 +44,7 @@ const HistoricalDataCharts = ({ data, mode }: HistoricalData) => {
           type="monotone"
           name="Temperature"
           dataKey="temperature"
-          stroke="#8884d8"
+          stroke="#6dc5c0"
         />
       </LineChart>
     </ResponsiveContainer>
