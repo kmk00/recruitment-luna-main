@@ -31,7 +31,7 @@ const CurrentModuleData = ({ moduleId, action }: CurrentModuleDataProps) => {
       }
     };
     fetchData();
-  }, [moduleId]);
+  }, []);
 
   return (
     <>
