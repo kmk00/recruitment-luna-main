@@ -19,8 +19,6 @@ const HistoricalDataCharts = ({ data, mode }: HistoricalData) => {
     temperature: item.temperature,
   }));
 
-  console.log(chartData);
-
   return (
     <ResponsiveContainer
       width="100%"

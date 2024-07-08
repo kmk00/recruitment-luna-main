@@ -15,7 +15,6 @@ function App() {
             id={module.id}
             key={module.id}
             name={module.name}
-            currentTemperature={module.currentTemperature}
             targetTemperature={module.targetTemperature}
             available={module.available}
           />
