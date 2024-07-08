@@ -27,6 +27,7 @@ const CurrentTemperature = ({
       ) : (
         <p
           className={`${
+            accent !== undefined &&
             styles[
               "module__temperature-value--" + (accent ? "positive" : "negative")
             ]
