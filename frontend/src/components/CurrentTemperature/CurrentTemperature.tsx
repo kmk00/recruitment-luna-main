@@ -19,9 +19,7 @@ const CurrentTemperature = ({
   );
 
   return (
-    <div
-      className={`${styles["module__container"]} ${styles["module__temperature"]}`}
-    >
+    <>
       <p className={styles["module__temperature-label"]}>Current</p>
 
       {!available ? (
@@ -35,7 +33,7 @@ const CurrentTemperature = ({
           {currentTemperature ? `${currentTemperature} °C` : "--"}
         </p>
       )}
-    </div>
+    </>
   );
 };
 

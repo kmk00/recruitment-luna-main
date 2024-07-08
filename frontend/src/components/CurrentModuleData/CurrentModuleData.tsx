@@ -35,7 +35,7 @@ const CurrentModuleData = ({ moduleId, action }: CurrentModuleDataProps) => {
 
   return (
     <>
-      {currentModule ? (
+      {currentModule && (
         <div className={styles["module"]}>
           <div className={styles["module__header"]}>
             <p className={styles["module__name"]}>{currentModule.name}</p>
@@ -56,11 +56,15 @@ const CurrentModuleData = ({ moduleId, action }: CurrentModuleDataProps) => {
           </div>
 
           <div className={styles["module__temperatures-container"]}>
-            <CurrentTemperature
-              moduleId={moduleId}
-              available={currentModule.available}
-              targetTemperature={currentModule.targetTemperature}
-            />
+            <div
+              className={`${styles["module__container"]} ${styles["module__temperature"]}`}
+            >
+              <CurrentTemperature
+                moduleId={moduleId}
+                available={currentModule.available}
+                targetTemperature={currentModule.targetTemperature}
+              />
+            </div>
             <div className={`${styles["module__container"]}`}>
               <p className={styles["module__temperature-label"]}>Target</p>
               <p className={styles["module__temperature-value"]}>
@@ -74,8 +78,6 @@ const CurrentModuleData = ({ moduleId, action }: CurrentModuleDataProps) => {
             </p>
           </div>
         </div>
-      ) : (
-        <p>Loading...</p>
       )}
     </>
   );

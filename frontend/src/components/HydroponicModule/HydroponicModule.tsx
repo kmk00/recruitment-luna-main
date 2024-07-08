@@ -1,20 +1,14 @@
 import { Link } from "react-router-dom";
 import styles from "./HydroponicModule.module.css";
 import { Module } from "../../types.global.ts";
-import calculateTemperatureColor from "../../utils/calculateTemperatureColor.ts";
+import CurrentTemperature from "../CurrentTemperature/CurrentTemperature.tsx";
 
 const HydroponicModule = ({
   id,
   name,
-  currentTemperature,
   targetTemperature,
   available,
 }: Module) => {
-  const accent = calculateTemperatureColor(
-    currentTemperature,
-    targetTemperature
-  );
-
   return (
     <Link className={styles["module"]} to={`/${id}`}>
       <div className={styles["module__header"]}>
@@ -29,14 +23,11 @@ const HydroponicModule = ({
       </div>
       <div className={styles["module__temperatures-container"]}>
         <div>
-          <p className={styles["module__temperature-label"]}>Current</p>
-          <p
-            className={`${styles["module__temperature-value"]} ${
-              available && styles[`module__temperature-value--${accent}`]
-            }`}
-          >
-            {currentTemperature ? currentTemperature + "°C" : "--"}
-          </p>
+          <CurrentTemperature
+            moduleId={id}
+            targetTemperature={targetTemperature}
+            available={available}
+          />
         </div>
         <div>
           <p className={styles["module__temperature-label"]}>Target</p>

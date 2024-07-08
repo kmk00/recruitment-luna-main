@@ -20,9 +20,7 @@ const HydrophonicModuleDetails = () => {
             <EditModal moduleId={id} closeModal={() => setOpened(false)} />
           )}
         </div>
-      ) : (
-        <p>Module not found</p>
-      )}
+      ) : null}
     </>
   );
 };
