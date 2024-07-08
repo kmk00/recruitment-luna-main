@@ -20,6 +20,10 @@
   font-size: 1.2rem;
 }
 
+.module__temperature-label {
+  opacity: 0.5;
+}
+
 .module__temperature-value--positive {
   color: var(--secondary-color);
 }

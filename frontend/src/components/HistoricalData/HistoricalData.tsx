@@ -59,6 +59,7 @@ const HistoricalData = ({ moduleId }: HistoricalDataProps) => {
             {...register("start", { required: "Start date is required" })}
             type="datetime-local"
             id="start"
+            step={".1"}
             name="start"
           />
           {errors.start && <p>{errors.start.message}</p>}
@@ -67,8 +68,8 @@ const HistoricalData = ({ moduleId }: HistoricalDataProps) => {
           <label htmlFor="stop">Stop date</label>
           <input
             {...register("stop", { required: "Stop date is required" })}
-            defaultValue={new Date().toISOString().slice(0, -8)}
             type="datetime-local"
+            step={".1"}
             id="stop"
             name="stop"
           />

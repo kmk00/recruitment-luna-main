@@ -31,52 +31,61 @@ const CurrentModuleData = ({ moduleId, action }: CurrentModuleDataProps) => {
       }
     };
     fetchData();
-  }, [moduleId]);
+  }, []);
 
   return (
     <>
-      {currentModule ? (
-        <div className={styles["module"]}>
-          <div className={styles["module__header"]}>
-            <p className={styles["module__name"]}>{currentModule.name}</p>
-            <div className={styles["module__buttons"]}>
-              <Link to="/">
-                <button className={styles["btn"]}>Go back</button>
-              </Link>
-              <button
-                disabled={!currentModule.available}
-                className={`${styles["btn"]} ${
-                  !currentModule.available ? styles["btn--disabled"] : ""
-                }`}
-                onClick={action}
-              >
-                Edit
-              </button>
-            </div>
+      <div className={styles["module"]}>
+        <div className={styles["module__header"]}>
+          <p className={styles["module__name"]}>
+            {(currentModule && currentModule.name) || "Loading..."}
+          </p>
+          <div className={styles["module__buttons"]}>
+            <Link to="/">
+              <button className={styles["btn"]}>Go back</button>
+            </Link>
+            <button
+              disabled={!currentModule?.available}
+              className={`${styles["btn"]} ${
+                !currentModule?.available ? styles["btn--disabled"] : ""
+              }`}
+              onClick={action}
+            >
+              Edit
+            </button>
           </div>
+        </div>
 
-          <div className={styles["module__temperatures-container"]}>
-            <CurrentTemperature
-              moduleId={moduleId}
-              available={currentModule.available}
-              targetTemperature={currentModule.targetTemperature}
-            />
-            <div className={`${styles["module__container"]}`}>
-              <p className={styles["module__temperature-label"]}>Target</p>
-              <p className={styles["module__temperature-value"]}>
-                {currentModule.targetTemperature}°C
-              </p>
+        <div className={styles["module__temperatures-container"]}>
+          {currentModule ? (
+            <div
+              className={`${styles["module__container"]} ${styles["module__temperature"]}`}
+            >
+              <CurrentTemperature
+                moduleId={moduleId}
+                available={currentModule.available}
+                targetTemperature={currentModule.targetTemperature}
+              />
             </div>
-          </div>
-          <div className={styles["module__container"]}>
-            <p className={styles["module__description"]}>
-              {currentModule.description}
+          ) : (
+            <div className={`${styles["module__container"]}`}>
+              <p className={styles["module__temperature-label"]}>Current</p>
+              <p className={styles["module__temperature-value"]}>...</p>
+            </div>
+          )}
+          <div className={`${styles["module__container"]}`}>
+            <p className={styles["module__temperature-label"]}>Target</p>
+            <p className={styles["module__temperature-value"]}>
+              {currentModule?.targetTemperature}°C
             </p>
           </div>
         </div>
-      ) : (
-        <p>Loading...</p>
-      )}
+        <div className={styles["module__container"]}>
+          <p className={styles["module__description"]}>
+            {(currentModule && currentModule.description) || "..."}
+          </p>
+        </div>
+      </div>
     </>
   );
 };
