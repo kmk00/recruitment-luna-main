@@ -76,8 +76,6 @@ Recrutiment task - Aquaponic Iot
 
 ## Project Structure
 
-Outline the structure of your project and explain the purpose of key files and directories.
-
 ```plaintext
 src/
 │   App.tsx
