@@ -34,3 +34,8 @@ button {
   font-weight: bold;
   background-color: var(--dark-color);
 }
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
