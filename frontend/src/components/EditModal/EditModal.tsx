@@ -19,10 +19,10 @@ const EditModal = ({
     // Get module data for editing
     const fetchModule = async () => {
       const response = await fetch(`http://localhost:3001/modules/${moduleId}`);
-      const module = await response.json();
-      setValue("name", module.name);
-      setValue("description", module.description);
-      setValue("targetTemperature", module.targetTemperature);
+      const data = await response.json();
+      setValue("name", data.name);
+      setValue("description", data.description);
+      setValue("targetTemperature", data.targetTemperature);
     };
 
     fetchModule();
