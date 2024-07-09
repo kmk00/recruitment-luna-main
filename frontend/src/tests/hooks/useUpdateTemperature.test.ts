@@ -1,4 +1,4 @@
-import { renderHook, waitFor } from "@testing-library/react";
+import { renderHook } from "@testing-library/react";
 import useUpdateTemperature from "../../hooks/useUpdateTemperature";
 import { CurrentTemperatureData } from "../../types.global";
 
@@ -24,5 +24,13 @@ describe("useUpdateTemperature", () => {
         }),
       };
     });
+  });
+
+  test("should update temperature when moduleUpdate event is received", () => {
+    const { result } = renderHook(() =>
+      useUpdateTemperature("0a0f77eb1-50a0-4d98-8116-064fc5a84693")
+    );
+
+    expect(result.current.currentTemperature).toBe(25);
   });
 });
