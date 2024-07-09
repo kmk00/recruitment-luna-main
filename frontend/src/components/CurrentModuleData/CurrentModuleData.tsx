@@ -45,7 +45,7 @@ const CurrentModuleData = ({ moduleId, action }: CurrentModuleDataProps) => {
               <button className={styles["btn"]}>Go back</button>
             </Link>
             <button
-              disabled={!currentModule?.available}
+              disabled={!currentModule?.available ? true : false}
               className={`${styles["btn"]} ${
                 !currentModule?.available ? styles["btn--disabled"] : ""
               }`}
