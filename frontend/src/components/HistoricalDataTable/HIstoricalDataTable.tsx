@@ -1,9 +1,14 @@
 import { HistoricalData } from "../../types.global";
 import styles from "./HistoricalDataTable.module.css";
 
-const HistoricalDataTable = ({ data }: HistoricalData) => {
+const HistoricalDataTable = ({ data, start, stop, mode }: HistoricalData) => {
+  console.log(data);
   return (
     <div className={styles["historical-data"]}>
+      <h2>Historical Data Table - {mode}</h2>
+      <p>
+        {new Date(start).toLocaleString()} - {new Date(stop).toLocaleString()}
+      </p>
       <table className={styles.table}>
         <thead className={styles.thead}>
           <tr>

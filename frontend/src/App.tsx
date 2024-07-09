@@ -1,6 +1,7 @@
 import styles from "./styles/App.module.css";
 import HydroponicModule from "./components/HydroponicModule/HydroponicModule";
 import useCurrentModules from "./hooks/useCurrentModules";
+import { Module } from "./types.global";
 
 function App() {
   const { modules } = useCurrentModules();
@@ -9,12 +10,11 @@ function App() {
     <div className={styles["app"]}>
       <h1>Hydroponic modules</h1>
       <div className={styles["modules-container"]}>
-        {modules.map((module) => (
+        {modules.map((module: Module) => (
           <HydroponicModule
             id={module.id}
             key={module.id}
             name={module.name}
-            currentTemperature={module.currentTemperature}
             targetTemperature={module.targetTemperature}
             available={module.available}
           />

@@ -14,7 +14,7 @@ const router = createBrowserRouter([
   {
     path: "/:id",
     element: <HydrophonicModuleDetails />,
-    errorElement: <h1>404</h1>,
+    errorElement: <Error />,
   },
   {
     path: "/error",

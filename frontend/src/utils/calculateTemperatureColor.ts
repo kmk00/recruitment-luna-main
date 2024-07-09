@@ -1,15 +1,15 @@
 const calculateTemperatureColor = (
   currentTemperature: number | undefined,
-  targetTemperature: number | undefined
+  targetTemperature: number
 ) => {
   if (currentTemperature === undefined || targetTemperature === undefined) {
-    return "neutral";
+    return;
   }
 
   return targetTemperature - currentTemperature > 0.5 ||
     currentTemperature - targetTemperature > 0.5
-    ? "negative"
-    : "positive";
+    ? false
+    : true;
 };
 
 export default calculateTemperatureColor;

@@ -10,17 +10,19 @@ const HydrophonicModuleDetails = () => {
   const [opened, setOpened] = useState<boolean>(false);
   const setOpenedCallback = () => setOpened(true);
 
+  if (!id) {
+    return null;
+  }
+
   return (
     <>
-      {id ? (
-        <div className={styles["module-details"]}>
-          <CurrentModuleData action={setOpenedCallback} moduleId={id} />
-          <HistoricalData moduleId={id} />
-          {opened && (
-            <EditModal moduleId={id} closeModal={() => setOpened(false)} />
-          )}
-        </div>
-      ) : null}
+      <div className={styles["module-details"]}>
+        <CurrentModuleData action={setOpenedCallback} moduleId={id} />
+        <HistoricalData moduleId={id} />
+        {opened && (
+          <EditModal moduleId={id} closeModal={() => setOpened(false)} />
+        )}
+      </div>
     </>
   );
 };

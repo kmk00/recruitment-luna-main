@@ -3,7 +3,7 @@ export interface Module {
   name: string;
   available: boolean;
   targetTemperature: number;
-  currentTemperature: number;
+  currentTemperature?: number;
 }
 
 export interface DetailedModule extends Module {
