@@ -1,6 +1,7 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import useCurrentModules from "../../hooks/useCurrentModules";
 
+// Unchanged modules from the server API:
 const modules = [
   {
     id: "0a0f77eb1-50a0-4d98-8116-064fc5a84693",

@@ -19,10 +19,12 @@ import { MemoryRouter } from "react-router-dom";
 describe("CurrentModuleData", () => {
   test("It should have the edit button disabled when the module is not available", async () => {
     const action = () => vi.fn();
+    const refresh = false;
 
     render(
       <MemoryRouter>
         <CurrentModuleData
+          refresh={refresh}
           moduleId="4d0aa62c-b1a9-489d-b4a2-fc16b878ba47"
           action={action}
         />
@@ -36,10 +38,12 @@ describe("CurrentModuleData", () => {
 
   test("It should have the edit button enabled when the module is available", async () => {
     const action = () => vi.fn();
+    const refresh = false;
 
     render(
       <MemoryRouter>
         <CurrentModuleData
+          refresh={refresh}
           moduleId="0a0f77eb1-50a0-4d98-8116-064fc5a84693"
           action={action}
         />
@@ -53,10 +57,12 @@ describe("CurrentModuleData", () => {
 
   test("It should have go back button", () => {
     const action = () => vi.fn();
+    const refresh = false;
 
     render(
       <MemoryRouter>
         <CurrentModuleData
+          refresh={refresh}
           moduleId="0a0f77eb1-50a0-4d98-8116-064fc5a84693"
           action={action}
         />
@@ -72,12 +78,14 @@ describe("CurrentModuleData", () => {
     render(
       <MemoryRouter>
         <CurrentModuleData
+          refresh={false}
           moduleId="0a0f77eb1-50a0-4d98-8116-064fc5a84693"
           action={action}
         />
       </MemoryRouter>
     );
 
+    // Unchanged modules from the server API:
     await waitFor(() =>
       expect(screen.getByText("Hydroponic module 1")).toBeDefined()
     );
