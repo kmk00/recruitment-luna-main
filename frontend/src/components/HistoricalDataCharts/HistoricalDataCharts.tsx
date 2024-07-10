@@ -23,7 +23,7 @@ const HistoricalDataCharts = ({ data, mode }: HistoricalData) => {
     <ResponsiveContainer
       width="100%"
       height={250}
-      className={styles["historical-data"]}
+      className={`${styles["historical-data"]} glass`}
     >
       <LineChart
         data={chartData}

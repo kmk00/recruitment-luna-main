@@ -3,7 +3,7 @@ import styles from "./HistoricalDataTable.module.css";
 
 const HistoricalDataTable = ({ data, start, stop, mode }: HistoricalData) => {
   return (
-    <div className={styles["historical-data"]}>
+    <div className={`${styles["historical-data"]} glass`}>
       <h2>Historical Data Table - {mode}</h2>
       <p>
         {new Date(start).toLocaleString()} - {new Date(stop).toLocaleString()}

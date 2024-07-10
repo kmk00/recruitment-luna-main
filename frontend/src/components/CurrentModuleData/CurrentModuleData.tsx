@@ -64,7 +64,7 @@ const CurrentModuleData = ({
         <div className={styles["module__temperatures-container"]}>
           {currentModule ? (
             <div
-              className={`${styles["module__container"]} ${styles["module__temperature"]}`}
+              className={`${styles["module__container"]} ${styles["module__temperature"]} glass`}
             >
               <CurrentTemperature
                 moduleId={moduleId}
@@ -73,19 +73,19 @@ const CurrentModuleData = ({
               />
             </div>
           ) : (
-            <div className={`${styles["module__container"]}`}>
+            <div className={`${styles["module__container"]} glass`}>
               <p className={styles["module__temperature-label"]}>Current</p>
               <p className={styles["module__temperature-value"]}>...</p>
             </div>
           )}
-          <div className={`${styles["module__container"]}`}>
+          <div className={`${styles["module__container"]} glass`}>
             <p className={styles["module__temperature-label"]}>Target</p>
             <p className={styles["module__temperature-value"]}>
               {currentModule?.targetTemperature}°C
             </p>
           </div>
         </div>
-        <div className={styles["module__container"]}>
+        <div className={`${styles["module__container"]} glass`}>
           <p className={styles["module__description"]}>
             {(currentModule && currentModule.description) || "..."}
           </p>

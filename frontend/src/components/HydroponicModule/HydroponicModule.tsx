@@ -10,7 +10,7 @@ const HydroponicModule = ({
   available,
 }: Module) => {
   return (
-    <Link className={styles["module"]} to={`/${id}`}>
+    <Link className={`${styles["module"]} glass`} to={`/${id}`}>
       <div className={styles["module__header"]}>
         <h2 className={styles["module__name"]}>{name}</h2>
         <p

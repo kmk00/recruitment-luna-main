@@ -8,7 +8,7 @@
 
 :root {
   --primary-color: #353536;
-  --dark-color: #232324;
+  --dark-color: rgb(35, 35, 36);
   --secondary-color: #9dc334;
   --accent-primary-color: #6dc5c0;
   --accent-secondary-color: #fe836c;
@@ -38,4 +38,14 @@ button {
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.glass {
+  /* From https://css.glass */
+  background: rgba(35, 35, 36, 0.72);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border: 1px solid rgba(35, 35, 36, 0.5);
 }

@@ -1,5 +1,6 @@
 .historical-data {
   flex-grow: 1;
+  padding: 2rem;
 }
 
 .temperature {
@@ -7,7 +8,6 @@
 }
 
 .table {
-  box-shadow: 0 0 10px var(--dark-color);
   margin-top: 2rem;
   padding: 1rem;
   width: 100%;

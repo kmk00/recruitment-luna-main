@@ -1,3 +1,4 @@
 .historical-data {
   box-shadow: 0 0 10px var(--dark-color);
+  padding-block: 1rem;
 }

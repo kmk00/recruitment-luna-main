@@ -61,7 +61,7 @@ const EditModal = ({
 
   return (
     <div className={styles["edit-modal"]}>
-      <div className={styles["edit-modal__content"]}>
+      <div className={`${styles["edit-modal__content"]}`}>
         <h2 className={styles["edit-modal__title"]}>Edit module</h2>
         <form
           onSubmit={handleSubmit(onSubmit)}
