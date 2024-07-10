@@ -5,9 +5,11 @@ import { useEffect } from "react";
 const EditModal = ({
   closeModal,
   moduleId,
+  setRefresh,
 }: {
   closeModal: () => void;
   moduleId: string;
+  setRefresh: (value: boolean) => void;
 }) => {
   type Inputs = {
     name: string;
@@ -41,6 +43,8 @@ const EditModal = ({
     if (!response.ok) {
       throw new Error("Failed to update module");
     }
+
+    setRefresh(true);
     closeModal();
   };
 

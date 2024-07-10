@@ -7,9 +7,14 @@ import CurrentTemperature from "../CurrentTemperature/CurrentTemperature";
 type CurrentModuleDataProps = {
   moduleId: string;
   action: () => void;
+  refresh: boolean;
 };
 
-const CurrentModuleData = ({ moduleId, action }: CurrentModuleDataProps) => {
+const CurrentModuleData = ({
+  moduleId,
+  action,
+  refresh,
+}: CurrentModuleDataProps) => {
   const [currentModule, setCurrentModule] = useState<DetailedModule>();
   const navigate = useNavigate();
 
@@ -31,7 +36,7 @@ const CurrentModuleData = ({ moduleId, action }: CurrentModuleDataProps) => {
       }
     };
     fetchData();
-  }, []);
+  }, [refresh]);
 
   return (
     <>
