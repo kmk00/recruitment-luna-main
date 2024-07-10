@@ -8,6 +8,7 @@ import CurrentModuleData from "./components/CurrentModuleData/CurrentModuleData"
 const HydrophonicModuleDetails = () => {
   const id = useParams<{ id: string }>().id;
   const [opened, setOpened] = useState<boolean>(false);
+  const [refresh, setRefresh] = useState<boolean>(false);
   const setOpenedCallback = () => setOpened(true);
 
   if (!id) {
@@ -17,10 +18,18 @@ const HydrophonicModuleDetails = () => {
   return (
     <>
       <div className={styles["module-details"]}>
-        <CurrentModuleData action={setOpenedCallback} moduleId={id} />
+        <CurrentModuleData
+          refresh={refresh}
+          action={setOpenedCallback}
+          moduleId={id}
+        />
         <HistoricalData moduleId={id} />
         {opened && (
-          <EditModal moduleId={id} closeModal={() => setOpened(false)} />
+          <EditModal
+            setRefresh={() => setRefresh(!refresh)}
+            moduleId={id}
+            closeModal={() => setOpened(false)}
+          />
         )}
       </div>
     </>
